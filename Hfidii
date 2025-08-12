@@ -1,11 +1,6 @@
--- =====================
--- OP SCRIPT BY HEATHERSCRIPTS
--- =====================
 local Players = game:GetService("Players")
 local UIS = game:GetService("UserInputService")
 local RunService = game:GetService("RunService")
-local TS = game:GetService("TweenService")
-local LocalPlayer = Players.LocalPlayer
 
 game.StarterGui:SetCore("ChatMakeSystemMessage", {
     Text = "made by Heatherscripts";
@@ -16,23 +11,23 @@ game.StarterGui:SetCore("ChatMakeSystemMessage", {
 
 local gui = Instance.new("ScreenGui")
 gui.Name = "Backshot gui"
-gui.Parent = LocalPlayer:WaitForChild("PlayerGui")
+gui.Parent = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
 
 local frame = Instance.new("Frame", gui)
 frame.Size = UDim2.new(0, 350, 0, 250)
 frame.Position = UDim2.new(0.5, -175, 0.5, -125)
 frame.BackgroundColor3 = Color3.new(0.15, 0.15, 0.15)
-frame.BorderColor3 = Color3.fromRGB(255, 0, 0) -- start red
+frame.BorderColor3 = Color3.new(1, 0, 0)
 frame.BorderSizePixel = 3
-frame.Active = true
 frame.Draggable = true
+frame.Active = true
 
 local title = Instance.new("TextLabel", frame)
 title.Text = "Premiumscriptshub"
 title.Size = UDim2.new(1, 0, 0, 40)
 title.Position = UDim2.new(0, 0, 0, 0)
 title.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
-title.TextColor3 = Color3.fromRGB(255, 0, 0)
+title.TextColor3 = Color3.new(1, 0, 0)
 title.Font = Enum.Font.SourceSansBold
 title.TextScaled = true
 
@@ -55,28 +50,10 @@ toggleButton.TextColor3 = Color3.new(1, 1, 1)
 toggleButton.Font = Enum.Font.SourceSansBold
 toggleButton.TextScaled = true
 
-local jerkOffButton = Instance.new("TextButton", frame)
-jerkOffButton.Text = "Jerk off"
-jerkOffButton.Size = UDim2.new(0.48, -10, 0, 30)
-jerkOffButton.Position = UDim2.new(0, 10, 0, 140)
-jerkOffButton.BackgroundColor3 = Color3.new(0.2, 0.2, 0.2)
-jerkOffButton.TextColor3 = Color3.new(1, 1, 1)
-jerkOffButton.Font = Enum.Font.SourceSansBold
-jerkOffButton.TextScaled = true
-
-local copyDiscordButton = Instance.new("TextButton", frame)
-copyDiscordButton.Text = "Copy Discord Server"
-copyDiscordButton.Size = UDim2.new(0.48, -10, 0, 30)
-copyDiscordButton.Position = UDim2.new(0.52, 0, 0, 140)
-copyDiscordButton.BackgroundColor3 = Color3.new(0.2, 0.2, 0.2)
-copyDiscordButton.TextColor3 = Color3.new(1, 1, 1)
-copyDiscordButton.Font = Enum.Font.SourceSansBold
-copyDiscordButton.TextScaled = true
-
 local statusLabel = Instance.new("TextLabel", frame)
 statusLabel.Text = "Status: Off"
 statusLabel.Size = UDim2.new(1, -20, 0, 30)
-statusLabel.Position = UDim2.new(0, 10, 0, 185)
+statusLabel.Position = UDim2.new(0, 10, 0, 150)
 statusLabel.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
 statusLabel.TextColor3 = Color3.new(1, 1, 1)
 statusLabel.Font = Enum.Font.SourceSans
@@ -85,13 +62,12 @@ statusLabel.TextScaled = true
 local messageLabel = Instance.new("TextLabel", frame)
 messageLabel.Text = "Made by Heatherscripts"
 messageLabel.Size = UDim2.new(1, -20, 0, 30)
-messageLabel.Position = UDim2.new(0, 10, 0, 220)
+messageLabel.Position = UDim2.new(0, 10, 0, 200)
 messageLabel.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
-messageLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
+messageLabel.TextColor3 = Color3.new(1, 0, 0)
 messageLabel.Font = Enum.Font.SourceSansBold
 messageLabel.TextScaled = true
 
--- Variables for follow
 local isFollowing = false
 local targetPlayer = nil
 local followConnection = nil
@@ -99,9 +75,8 @@ local animationTrack = nil
 local animationId = "rbxassetid://12992262118"
 
 local function findPlayerByName(name)
-    name = name:lower()
     for _, player in ipairs(Players:GetPlayers()) do
-        if player.Name:lower():find(name) or player.DisplayName:lower():find(name) then
+        if string.match(player.Name:lower(), name:lower()) or string.match(player.DisplayName:lower(), name:lower()) then
             return player
         end
     end
@@ -111,16 +86,15 @@ end
 local function followPlayer()
     if targetPlayer and targetPlayer.Character and targetPlayer.Character:FindFirstChild("HumanoidRootPart") then
         local targetRoot = targetPlayer.Character.HumanoidRootPart
-        local character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
+        local character = Players.LocalPlayer.Character or Players.LocalPlayer.CharacterAdded:Wait()
         local rootPart = character:WaitForChild("HumanoidRootPart")
-        local humanoid = character:WaitForChild("Humanoid")
         
+        local humanoid = character:WaitForChild("Humanoid")
         local animation = Instance.new("Animation")
         animation.AnimationId = animationId
-        
         animationTrack = humanoid:LoadAnimation(animation)
         animationTrack:Play()
-        animationTrack:AdjustSpeed(100)
+        animationTrack:AdjustSpeed(80)
         
         followConnection = RunService.Stepped:Connect(function()
             rootPart.CFrame = targetRoot.CFrame * CFrame.new(0, 0, 2)
@@ -156,44 +130,5 @@ toggleButton.MouseButton1Click:Connect(function()
         stopFollowing()
         statusLabel.Text = "Status: Off"
         toggleButton.Text = "Toggle On"
-    end
-end)
-
--- Border color toggle between red and white
-spawn(function()
-    local red = Color3.fromRGB(255, 0, 0)
-    local white = Color3.fromRGB(255, 255, 255)
-    local toggle = false
-    while true do
-        if toggle then
-            frame.BorderColor3 = white
-        else
-            frame.BorderColor3 = red
-        end
-        toggle = not toggle
-        wait(0.7)
-    end
-end)
-
--- Jerk off button functionality
-jerkOffButton.MouseButton1Click:Connect(function()
-    local success, err = pcall(function()
-        loadstring(game:HttpGet("https://pastefy.app/YZoglOyJ/raw"))()
-    end)
-    if not success then
-        statusLabel.Text = "Status: Error loading script"
-    else
-        statusLabel.Text = "Status: Jerk off script loaded"
-    end
-end)
-
--- Copy Discord Server button functionality
-copyDiscordButton.MouseButton1Click:Connect(function()
-    local discordLink = "https://discord.gg/UvASt9rPeh"
-    if setclipboard then
-        setclipboard(discordLink)
-        statusLabel.Text = "Status: Discord link copied!"
-    else
-        statusLabel.Text = "Status: Unable to copy link"
     end
 end)
