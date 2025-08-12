@@ -93,7 +93,7 @@ local isFollowing = false
 local targetPlayer = nil
 local followConnection = nil
 local animationTrack = nil
-local animationId = "rbxassetid://5897029227"
+local animationId = "rbxassetid://12992262118"
 
 local function findPlayerByName(name)
     name = name:lower()
