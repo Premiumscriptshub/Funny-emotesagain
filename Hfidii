@@ -2,7 +2,7 @@
 local PASSWORDS = {
     "Heatherishere",
     "Heatherboss",
-    "Heatherthebest"
+    "Heatherop"
 }
 
 --// Services
@@ -80,7 +80,8 @@ DiscordButton.MouseButton1Click:Connect(function()
         Title = "Discord Link Copied";
         Text = "Paste it in your browser to join.";
         Duration = 5;
-local Players = game:GetService("Players")
+    })
+end)local Players = game:GetService("Players")
 local UIS = game:GetService("UserInputService")
 local RunService = game:GetService("RunService")
 local TS = game:GetService("TweenService")
