@@ -1,281 +1,62 @@
---// Keys that will work
-local PASSWORDS = {
-    "Heatherishere",
-    "Heatherboss",
-    "Heatherop"
-}
-
---// Services
-local Players = game:GetService("Players")
-local LocalPlayer = Players.LocalPlayer
-local StarterGui = game:GetService("StarterGui")
-
---// GUI Setup
-local ScreenGui = Instance.new("ScreenGui", LocalPlayer:WaitForChild("PlayerGui"))
-local Frame = Instance.new("Frame", ScreenGui)
-Frame.Size = UDim2.new(0, 300, 0, 180)
-Frame.Position = UDim2.new(0.5, -150, 0.5, -90)
-Frame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
-Frame.BorderSizePixel = 0
-
--- Text Label
-local Title = Instance.new("TextLabel", Frame)
-Title.Size = UDim2.new(1, 0, 0, 40)
-Title.BackgroundTransparency = 1
-Title.Text = "Enter Key to Continue"
-Title.TextColor3 = Color3.fromRGB(255, 255, 255)
-Title.TextSize = 20
-
--- Text Box
-local TextBox = Instance.new("TextBox", Frame)
-TextBox.Size = UDim2.new(1, -20, 0, 40)
-TextBox.Position = UDim2.new(0, 10, 0, 50)
-TextBox.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-TextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextBox.PlaceholderText = "Enter Key"
-TextBox.TextSize = 18
-
--- Submit Button
-local SubmitButton = Instance.new("TextButton", Frame)
-SubmitButton.Size = UDim2.new(1, -20, 0, 40)
-SubmitButton.Position = UDim2.new(0, 10, 0, 100)
-SubmitButton.BackgroundColor3 = Color3.fromRGB(0, 170, 255)
-SubmitButton.Text = "Submit Key"
-SubmitButton.TextSize = 18
-SubmitButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-
--- Discord Button
-local DiscordButton = Instance.new("TextButton", Frame)
-DiscordButton.Size = UDim2.new(1, -20, 0, 30)
-DiscordButton.Position = UDim2.new(0, 10, 0, 150)
-DiscordButton.BackgroundColor3 = Color3.fromRGB(114, 137, 218)
-DiscordButton.Text = "Join our Discord for the Key"
-DiscordButton.TextSize = 16
-DiscordButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-
--- Button Functions
-SubmitButton.MouseButton1Click:Connect(function()
-    local enteredKey = TextBox.Text
-    local valid = false
-    for _, key in ipairs(PASSWORDS) do
-        if enteredKey == key then
-            valid = true
-            break
-        end
-    end
-    
-    if valid then
-        ScreenGui:Destroy()
-        print("Key correct! Running script...")
-        -- Put your main script here
-    else
-        TextBox.Text = ""
-        TextBox.PlaceholderText = "Wrong key! Try again..."
-    end
-end)
-
-DiscordButton.MouseButton1Click:Connect(function()
-    setclipboard("https://discord.gg/YourInviteHere") -- Change to your Discord link
-    StarterGui:SetCore("SendNotification", {
-        Title = "Discord Link Copied";
-        Text = "Paste it in your browser to join.";
-        Duration = 5;
-    })
-end)local Players = game:GetService("Players")
-local UIS = game:GetService("UserInputService")
-local RunService = game:GetService("RunService")
-local TS = game:GetService("TweenService")
-local LocalPlayer = Players.LocalPlayer
-
-game.StarterGui:SetCore("ChatMakeSystemMessage", {
-    Text = "made by Heatherscripts";
-    Color = Color3.fromRGB(255, 0, 0);
-    Font = Enum.Font.SourceSansBold;
-    TextSize = 24;
-})
-
-local gui = Instance.new("ScreenGui")
-gui.Name = "Backshot gui"
-gui.Parent = LocalPlayer:WaitForChild("PlayerGui")
-
-local frame = Instance.new("Frame", gui)
-frame.Size = UDim2.new(0, 350, 0, 250)
-frame.Position = UDim2.new(0.5, -175, 0.5, -125)
-frame.BackgroundColor3 = Color3.new(0.15, 0.15, 0.15)
-frame.BorderColor3 = Color3.fromRGB(255, 0, 0) -- start red
-frame.BorderSizePixel = 3
-frame.Active = true
-frame.Draggable = true
-
-local title = Instance.new("TextLabel", frame)
-title.Text = "Premiumscriptshub"
-title.Size = UDim2.new(1, 0, 0, 40)
-title.Position = UDim2.new(0, 0, 0, 0)
-title.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
-title.TextColor3 = Color3.fromRGB(255, 0, 0)
-title.Font = Enum.Font.SourceSansBold
-title.TextScaled = true
-
-local textBox = Instance.new("TextBox", frame)
-textBox.PlaceholderText = "Enter username/display name"
-textBox.Size = UDim2.new(1, -20, 0, 30)
-textBox.Position = UDim2.new(0, 10, 0, 50)
-textBox.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
-textBox.TextColor3 = Color3.new(1, 1, 1)
-textBox.Font = Enum.Font.SourceSans
-textBox.TextScaled = true
-textBox.ClearTextOnFocus = false
-
-local toggleButton = Instance.new("TextButton", frame)
-toggleButton.Text = "Toggle On"
-toggleButton.Size = UDim2.new(1, -20, 0, 30)
-toggleButton.Position = UDim2.new(0, 10, 0, 100)
-toggleButton.BackgroundColor3 = Color3.new(0.2, 0.2, 0.2)
-toggleButton.TextColor3 = Color3.new(1, 1, 1)
-toggleButton.Font = Enum.Font.SourceSansBold
-toggleButton.TextScaled = true
-
-local jerkOffButton = Instance.new("TextButton", frame)
-jerkOffButton.Text = "Jerk off"
-jerkOffButton.Size = UDim2.new(0.48, -10, 0, 30)
-jerkOffButton.Position = UDim2.new(0, 10, 0, 140)
-jerkOffButton.BackgroundColor3 = Color3.new(0.2, 0.2, 0.2)
-jerkOffButton.TextColor3 = Color3.new(1, 1, 1)
-jerkOffButton.Font = Enum.Font.SourceSansBold
-jerkOffButton.TextScaled = true
-
-local copyDiscordButton = Instance.new("TextButton", frame)
-copyDiscordButton.Text = "Copy Discord Server"
-copyDiscordButton.Size = UDim2.new(0.48, -10, 0, 30)
-copyDiscordButton.Position = UDim2.new(0.52, 0, 0, 140)
-copyDiscordButton.BackgroundColor3 = Color3.new(0.2, 0.2, 0.2)
-copyDiscordButton.TextColor3 = Color3.new(1, 1, 1)
-copyDiscordButton.Font = Enum.Font.SourceSansBold
-copyDiscordButton.TextScaled = true
-
-local statusLabel = Instance.new("TextLabel", frame)
-statusLabel.Text = "Status: Off"
-statusLabel.Size = UDim2.new(1, -20, 0, 30)
-statusLabel.Position = UDim2.new(0, 10, 0, 185)
-statusLabel.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
-statusLabel.TextColor3 = Color3.new(1, 1, 1)
-statusLabel.Font = Enum.Font.SourceSans
-statusLabel.TextScaled = true
-
-local messageLabel = Instance.new("TextLabel", frame)
-messageLabel.Text = "Made by Heatherscripts"
-messageLabel.Size = UDim2.new(1, -20, 0, 30)
-messageLabel.Position = UDim2.new(0, 10, 0, 220)
-messageLabel.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
-messageLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
-messageLabel.Font = Enum.Font.SourceSansBold
-messageLabel.TextScaled = true
-
--- Variables for follow
-local isFollowing = false
-local targetPlayer = nil
-local followConnection = nil
-local animationTrack = nil
-local animationId = "rbxassetid://12992262118"
-
-local function findPlayerByName(name)
-    name = name:lower()
-    for _, player in ipairs(Players:GetPlayers()) do
-        if player.Name:lower():find(name) or player.DisplayName:lower():find(name) then
-            return player
-        end
-    end
-    return nil
-end
-
-local function followPlayer()
-    if targetPlayer and targetPlayer.Character and targetPlayer.Character:FindFirstChild("HumanoidRootPart") then
-        local targetRoot = targetPlayer.Character.HumanoidRootPart
-        local character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
-        local rootPart = character:WaitForChild("HumanoidRootPart")
-        local humanoid = character:WaitForChild("Humanoid")
-        
-        local animation = Instance.new("Animation")
-        animation.AnimationId = animationId
-        
-        animationTrack = humanoid:LoadAnimation(animation)
-        animationTrack:Play()
-        animationTrack:AdjustSpeed(100)
-        
-        followConnection = RunService.Stepped:Connect(function()
-            rootPart.CFrame = targetRoot.CFrame * CFrame.new(0, 0, 2)
-        end)
-    end
-end
-
-local function stopFollowing()
-    if followConnection then
-        followConnection:Disconnect()
-        followConnection = nil
-    end
-    if animationTrack then
-        animationTrack:Stop()
-        animationTrack = nil
-    end
-end
-
-toggleButton.MouseButton1Click:Connect(function()
-    isFollowing = not isFollowing
-    
-    if isFollowing then
-        targetPlayer = findPlayerByName(textBox.Text)
-        if targetPlayer then
-            followPlayer()
-            statusLabel.Text = "Status: On"
-            toggleButton.Text = "Toggle Off"
-        else
-            statusLabel.Text = "Status: Player not found"
-            isFollowing = false
-        end
-    else
-        stopFollowing()
-        statusLabel.Text = "Status: Off"
-        toggleButton.Text = "Toggle On"
-    end
-end)
-
--- Border color toggle between red and white
-spawn(function()
-    local red = Color3.fromRGB(255, 0, 0)
-    local white = Color3.fromRGB(255, 255, 255)
-    local toggle = false
-    while true do
-        if toggle then
-            frame.BorderColor3 = white
-        else
-            frame.BorderColor3 = red
-        end
-        toggle = not toggle
-        wait(0.7)
-    end
-end)
-
--- Jerk off button functionality
-jerkOffButton.MouseButton1Click:Connect(function()
-    local success, err = pcall(function()
-        loadstring(game:HttpGet("https://pastefy.app/YZoglOyJ/raw"))()
+local a=loadstring(game:HttpGet("\104\116\116\112\115\58\47\47\115\105\114\105\117\115\46\109\101\110\117\47\114\97\121\102\105\101\108\100"))()
+local b=a:CreateWindow({Name="\80\114\101\109\105\117\109\115\99\114\105\112\116\115\104\117\98",LoadingTitle="\72\101\97\116\104\101\114\115\99\114\105\112\116\115",LoadingSubtitle="\76\111\97\100\105\110\103\32\85\73...",ConfigurationSaving={Enabled=false}})
+local c=false
+local d=50
+local e
+local function f()
+    local g=game.Players.LocalPlayer
+    local h=g.Character or g.CharacterAdded:Wait()
+    local i=h:WaitForChild("HumanoidRootPart")
+    local j=Instance.new("BodyVelocity")
+    local k=Instance.new("BodyGyro")
+    j.MaxForce=Vector3.new(1e5,1e5,1e5)
+    k.MaxTorque=Vector3.new(1e5,1e5,1e5)
+    j.Velocity=Vector3.new(0,0,0)
+    k.CFrame=i.CFrame
+    j.Parent=i
+    k.Parent=i
+    e=game:GetService("RunService").RenderStepped:Connect(function()
+        if i then j.Velocity=Vector3.new(0,0,0) k.CFrame=i.CFrame end
     end)
-    if not success then
-        statusLabel.Text = "Status: Error loading script"
-    else
-        statusLabel.Text = "Status: Jerk off script loaded"
-    end
-end)
+end
+local function l()
+    c=false
+    if e then e:Disconnect() end
+    local g=game.Players.LocalPlayer
+    local h=g.Character
+    local m=h and h:FindFirstChild("Humanoid")
+    local i=h and h:FindFirstChild("HumanoidRootPart")
+    if i then for _,n in ipairs(i:GetChildren()) do if n:IsA("BodyGyro") or n:IsA("BodyVelocity") then n:Destroy() end end end
+    if m then m.WalkSpeed=16 end
+end
 
--- Copy Discord Server button functionality
-copyDiscordButton.MouseButton1Click:Connect(function()
-    local discordLink = "https://discord.gg/UvASt9rPeh"
-    -- Use SetClipboard for Roblox environments that support it
-    if setclipboard then
-        setclipboard(discordLink)
-        statusLabel.Text = "Status: Discord link copied!"
-    else
-        -- Fallback message if setclipboard not available
-        statusLabel.Text = "Status: Unable to copy link"
-    end
-end)
+-- Main Tab
+local o=b:CreateTab("\77\97\105\110")
+o:CreateButton({Name="\74\111\105\110\32\68\105\115\99\111\114\100\32\83\101\114\118\101\114",Callback=function()
+    setclipboard("\104\116\116\112\115\58\47\47\100\105\115\99\111\114\100\46\103\103\47\85\118\65\83\116\57\114\80\101\104")
+    a:Notify({Title="\68\105\115\99\111\114\100\32\76\105\110\107\32\67\111\112\105\101\100",Content="\84\104\101\32\108\105\110\107\32\104\97\115\32\98\101\101\110\32\99\111\112\105\101\100\32\116\111\32\121\111\117\114\32\99\108\105\112\98\111\97\114\100.",Duration=5})
+end})
+o:CreateParagraph({Title="\73\110\102\111",Content="\84\104\97\110\107\32\121\111\117\32\102\111\114\32\101\120\101\99\117\116\105\110\103\32\116\104\105\115\32\115\99\114\105\112\116.\32\74\111\105\110\32\111\117\114\32\100\105\115\99\111\114\100\32\102\111\114\32\109\111\114\101\32\115\99\114\105\112\116\115."})
+
+-- Basic Scripts Tab
+local p=b:CreateTab("\66\97\115\105\99\32\83\99\114\105\112\116\115")
+p:CreateSlider({Name="\70\108\121\32\83\112\101\101\100",Range={0,50},Increment=1,Suffix="\83\112\101\101\100",CurrentValue=d,Callback=function(q)d=q end})
+p:CreateButton({Name="\84\111\103\103\108\101\32\70\108\121",Callback=function() if c then l() else c=true;f() end end})
+p:CreateButton({Name="\85\110\102\108\121",Callback=function() l() end})
+p:CreateSlider({Name="\87\97\108\107\32\83\112\101\101\100",Range={0,100},Increment=1,Suffix="\83\112\101\101\100",CurrentValue=16,Callback=function(q) local r=game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") if r then r.WalkSpeed=q end end})
+p:CreateSlider({Name="\74\117\109\112\32\80\111\119\101\114",Range={0,100},Increment=1,Suffix="\80\111\119\101\114",CurrentValue=50,Callback=function(q) local r=game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") if r then r.JumpPower=q end end})
+p:CreateButton({Name="\78\111\32\67\108\105\112",Callback=function() loadstring(game:HttpGet("\104\116\116\112\115\58\47\47\114\97\119\46\103\105\116\104\117\98\117\115\101\114\99\111\110\116\101\110\116\46\99\111\109\47\109\103\97\109\105\110\103\112\114\111\47\99\108\105\112\47\109\97\105\110\47\110\111\99\108\105\112"))() end})
+p:CreateButton({Name="\73\110\102\105\110\105\116\101\32\74\117\109\112",Callback=function() loadstring(game:HttpGet("\104\116\116\112\115\58\47\47\112\97\115\116\101\98\105\110\46\99\111\109\47\114\97\119\47\97\97\69\51\121\114\115\109"))() end})
+p:CreateButton({Name="\73\110\102\105\110\105\116\101\32\89\105\101\108\100",Callback=function() loadstring(game:HttpGet("\104\116\116\112\115\58\47\47\114\97\119\46\103\105\116\104\117\98\117\115\101\114\99\111\110\116\101\110\116\46\99\111\109\47\69\100\103\101\73\89\47\105\110\102\105\110\105\116\101\121\105\101\108\100"))() end})
+
+-- FE Hubs Tab
+local s=b:CreateTab("\70\69\32\72\117\98s")
+s:CreateButton({Name="\72\97\116\32\72\117\98",Callback=function() loadstring(game:HttpGet("\104\116\116\112\115\58\47\47\114\97\119\46\103\105\116\104\117\98\117\115\101\114\99\111\110\116\101\110\116\46\99\111\109\47\105\110\107\100\117\112\101\47\104\97\116\45\115\99\114\105\112\116\115\47\114\101\102\115\47\104\101\97\100\115\47\109\97\105\110\47\117\112\100\97\116\101\100\104\97\116\104\117\98\46\108\117\97"))() end})
+s:CreateButton({Name="\71\111\111\98\101\114\32\72\117\98",Callback=function() loadstring(game:HttpGet("\104\116\116\112\115\58\47\47\114\97\119\46\103\105\116\104\117\98\117\115\101\114\99\111\110\116\101\110\116\46\99\111\109\47\65\105\109\108\111\99\107\68\101\118\47\71\111\111\98\101\114\45\72\117\98\47\114\101\102\115\47\104\101\97\100\115\47\109\97\105\110\47\71\111\111\98\101\114\45\72\117\98\86\49\45\65\87\85\46\108\117\97"))() end})
+s:CreateButton({Name="\80\108\97\121\101\114\32\66\97\110\103\101\114",Callback=function() loadstring(game:HttpGet("\104\116\116\112\115\58\47\47\114\97\119\46\103\105\116\104\117\98\117\115\101\114\99\111\110\116\101\110\116\46\99\111\109\47\80\114\101\109\105\117\109\115\99\114\105\112\116\115\104\117\98\47\75\101\111\100\111\105\119\106\47\114\101\102\115\47\104\101\97\100\115\47\109\97\105\110\47\68\117\117\100\101\104"))() end})
+
+-- Popular Scripts Tab
+local t=b:CreateTab("\80\111\112\117\108\97\114\32\83\99\114\105\112\116\115")
+t:CreateButton({Name="\71\104\111\115\116\104\117\98",Callback=function() loadstring(game:HttpGet("\104\116\116\112\115\58\47\47\112\117\114\112\108\101\115\115\115\116\114\97\116\46\103\105\116\104\117\98\46\105\111\47\83\99\114\105\112\116\115\47\71\104\111\115\116\72\117\98\46\108\117\97"))() end})
+t:CreateButton({Name="\65\116\104\101\114\104\117\98",Callback=function() loadstring(game:HttpGet("\104\116\116\112\115\58\47\47\97\112\105\46\108\117\97\109\111\114\46\110\101\116\47\102\105\108\101\115\47\118\51\47\108\111\97\100\101\114\115\47\50\53\50\57\97\53\102\57\100\102\100\100\100\53\53\50\51\99\97\52\101\50\50\102\50\49\99\99\101\102\102\97\46\108\117\97"))() end})
+t:CreateButton({Name="\82\105\102\116",Callback=function() loadstring(game:HttpGet("\104\116\116\112\115\58\47\47\114\105\102\116\111\110\46\116\111\112\47\108\111\97\100\101\114\46\108\117\97"))() end})
